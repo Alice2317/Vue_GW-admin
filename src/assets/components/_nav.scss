@@ -1,0 +1,27 @@
+.c-nav1 {
+  .nav-item {
+    position: relative;
+
+    .nav-link::before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: map-get($theme-colors, "primary");
+      z-index: -999;
+      transform: translateY(-100%);
+      transition: transform 0.5s linear;
+    }
+
+    .nav-link:hover {
+      color: map-get($colors, "white") !important;
+    }
+
+    .nav-link:hover::before {
+      transform: translateY(0%);
+    }
+  }
+}

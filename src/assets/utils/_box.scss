@@ -1,0 +1,9 @@
+@for $i from 1 through 1200 {
+  .max-width-#{$i} {
+    max-width: #{$i}px;
+  }
+
+  .min-width-#{$i} {
+    min-width: #{$i}px;
+  }
+}

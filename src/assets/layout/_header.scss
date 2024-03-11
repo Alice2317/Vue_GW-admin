@@ -1,0 +1,19 @@
+.has-header-layout {
+  padding-top: 49px;
+
+  @include tablet() {
+    padding: 0;
+  }
+}
+
+.header {
+  border-bottom: 2px solid map-get($theme-colors, "primary");
+
+  .container {
+    border-right: 2px solid map-get($theme-colors, "primary");
+
+    @include tablet() {
+      border-right: initial;
+    }
+  }
+}

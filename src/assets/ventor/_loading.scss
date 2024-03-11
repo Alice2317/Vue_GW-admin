@@ -1,0 +1,65 @@
+.loading-box {
+  position: relative;
+
+  .loading-text {
+    font-size: 80px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: -16px;
+    width: 180px;
+    height: 180px;
+    border: 4px solid black;
+    transform: rotate(45deg);
+    animation-name: counterClock;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: -16px;
+    width: 180px;
+    height: 180px;
+    border: 4px solid black;
+    transform: rotate(90deg);
+    animation-name: clockwise;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes counterClock {
+  0% {
+    transform: inherit;
+  }
+
+  50% {
+    transform: rotate(-360deg);
+  }
+
+  100% {
+    transform: inherit;
+  }
+}
+
+@keyframes clockwise {
+  0% {
+    transform: inherit;
+  }
+
+  50% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: inherit;
+  }
+}

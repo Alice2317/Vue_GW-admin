@@ -1,0 +1,21 @@
+//google font family & google icon
+@import "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@400;700;900&family=Raleway&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200";
+
+@import "bootstrap/scss/functions";
+
+@import "./base/base";
+@import "./base/variables";
+@import "./utils/media";
+@import "./utils/box";
+@import "./utils/text";
+@import "./utils/input";
+
+@import "./layout/main";
+@import "./layout/header";
+
+@import "./components/nav";
+
+@import "./ventor/loading";
+
+@import "bootstrap/scss/bootstrap";

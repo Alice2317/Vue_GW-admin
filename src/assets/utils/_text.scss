@@ -1,0 +1,38 @@
+.ls-sm {
+  letter-spacing: 4px;
+}
+
+.ls-md {
+  letter-spacing: 12px;
+}
+
+.ff-raleway {
+  font-family: 'Raleway';
+}
+
+.ff-sans {
+  font-family: 'Noto Sans TC';
+}
+
+.ff-serif {
+  font-family: 'Noto Serif TC';
+}
+
+.writing-mode-vertical {
+  writing-mode: vertical-lr;
+}
+
+@each $size,
+$value in $font-sizes {
+  .fs-lg-#{$size} {
+    @include desktop() {
+      font-size: #{$value};
+    }
+  }
+
+  .fs-md-#{$size} {
+    @include tablet() {
+      font-size: #{$value};
+    }
+  }
+}
