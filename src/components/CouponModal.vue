@@ -1,6 +1,6 @@
 <template>
-  <VForm @submit="updateCoupon">
-    <div class="modal" tabindex="-1" :class="{ 'd-block': isShow }">
+  <VForm @submit="updateCoupon" v-if="isShow">
+    <div class="modal d-block" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
