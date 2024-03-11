@@ -1,5 +1,5 @@
 <template>
-  <VForm @submit.prevent="updateProduct"  v-if="isShow">
+  <VForm @submit="updateProduct"  v-if="isShow">
     <div class="modal d-block" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">

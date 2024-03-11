@@ -38,7 +38,6 @@ export default defineStore('productsDefineStore', {
       this.products.sort((a, b) => a[sort] - b[sort])
     },
     hideModal () {
-      modal.tempProduct = {}
       modal.isShow = false
     },
     getProduct (boolean, item) {
