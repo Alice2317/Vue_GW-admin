@@ -31,15 +31,18 @@ export default defineStore('memberDefineStore', {
       const api = `${import.meta.env.VITE_MAIN_URL}/v2/admin/signin`
       axios.post(api, this.user).then((res) => {
         if (res.data.success) {
+          status.isLoading = false
           document.cookie = `token=${res.data.token}; expires=${new Date(
             res.data.expired
           )};`
           this.router.replace({ name: 'products' })
-          status.isLoading = false
-          this.user = {
-            username: '',
-            password: ''
-          }
+
+          setTimeout(() => {
+            this.user = {
+              username: '',
+              password: ''
+            }
+          }, 1000)
         } else {
           this.toast('error', '失敗，請重新登入')
         }
