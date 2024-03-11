@@ -2,7 +2,7 @@
   <nav class="navbar fixed-top header bg-body">
     <div class="container px-12 px-lg-0">
       <!-- logo -->
-      <a href="https://alice2317.github.io/Vue-week6/" target="_" class="navbar-brand text-primary ff-raleway m-0 p-0"
+      <a href="https://alice2317.github.io/Vue-week6/" target="_" class="navbar-brand text-primary ff-serif m-0 p-0"
         >GW</a>
 
       <!-- menu -->

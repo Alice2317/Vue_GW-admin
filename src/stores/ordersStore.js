@@ -69,11 +69,11 @@ export default defineStore('ordersDefineStore', {
         .catch(() => this.toast('error', '上傳失敗'))
     },
     removeOrder (id) {
-      status.isLoading = true
       const api = `${import.meta.env.VITE_MAIN_URL}api/${import.meta.env.VITE_MAIN_NAME}/admin/order/${id}`
 
       this.alert().then((result) => {
         if (result.isConfirmed) {
+          status.isLoading = true
           axios.delete(api).then((res) => {
             status.isLoading = false
             if (res.data.success) {

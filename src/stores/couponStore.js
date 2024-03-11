@@ -86,10 +86,10 @@ export default defineStore('couponsDefineStore', {
       this.updateCoupon()
     },
     removeCoupon (id) {
-      status.isLoading = true
       const api = `${import.meta.env.VITE_MAIN_URL}/v2/api/${import.meta.env.VITE_MAIN_NAME}/admin/coupon/${id}`
       this.alert().then((result) => {
         if (result.isConfirmed) {
+          status.isLoading = true
           axios.delete(api).then((res) => {
             status.isLoading = false
             if (res.data.success) {

@@ -94,13 +94,14 @@
   <div class="d-flex justify-content-center">
     <PageC :pagination="pagination" @page="getProducts" />
   </div>
+
   <ProductModal />
 </template>
 
 <script>
 import { mapActions, mapState } from 'pinia'
-import productStore from '@/stores/productStore'
 import ProductModal from '@/components/ProductModal.vue'
+import productStore from '@/stores/productStore'
 import PageC from '@/components/PageC.vue'
 
 export default {

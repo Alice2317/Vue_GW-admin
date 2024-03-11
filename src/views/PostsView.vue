@@ -103,6 +103,7 @@
   <div class="d-flex justify-content-center">
     <PageC :pagination="pagination" @page="getPosts" />
   </div>
+
   <PostModal />
 </template>
 

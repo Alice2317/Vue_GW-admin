@@ -7,7 +7,12 @@
 </template>
 
 <script>
+import { mapState } from 'pinia'
+import loadingStore from '@/stores/loadingStore'
+
 export default {
-  props: ['isLoading']
+  computed: {
+    ...mapState(loadingStore, ['isLoading'])
+  }
 }
 </script>

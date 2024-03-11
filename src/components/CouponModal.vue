@@ -58,7 +58,7 @@
                     id="percent"
                     name="折扣百分比"
                     type="number"
-                    rules="required|integer|between:1,10"
+                    rules="required|integer|between:10,100"
                     min="1"
                     max="100"
                     class="form-control"

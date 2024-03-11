@@ -1,27 +1,22 @@
 <template>
   <NavbarC />
-  <LoadingC :isLoading="isLoading" />
   <main class="has-header-layout">
     <div class="container py-80">
       <router-view></router-view>
     </div>
   </main>
+  <LoadingC />
 </template>
 
 <script>
-import NavbarC from '@/components/NavbarC.vue'
 import { currency, date, dateUnix } from '@/js/filter'
+import NavbarC from '@/components/NavbarC.vue'
 import LoadingC from '@/components/LoadingC.vue'
 
 export default {
   provide () {
     return {
       currency, date, dateUnix
-    }
-  },
-  data () {
-    return {
-      isLoading: false
     }
   },
   components: {

@@ -92,11 +92,11 @@ export default defineStore('postsDefineStore', {
       this.updatePost()
     },
     removePost (id) {
-      status.isLoading = true
       const api = `${import.meta.env.VITE_MAIN_URL}api/${import.meta.env.VITE_MAIN_NAME}/admin/article/${id}`
 
       this.alert().then((result) => {
         if (result.isConfirmed) {
+          status.isLoading = true
           axios.delete(api).then((res) => {
             status.isLoading = false
             if (res.data.success) {
