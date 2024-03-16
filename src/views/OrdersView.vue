@@ -1,8 +1,13 @@
 <template>
   <div class="d-flex justify-content-between align-items-end">
-    <h2>訂單</h2>
+    <div class="d-flex">
+      <h2>訂單</h2>
+      <button type="button" class="btn" @click="removeAllOrder">
+        <span class="material-symbols-outlined">remove_circle</span>
+      </button>
+    </div>
     <div class="text-end">
-      <p class="p-0">總 {{ orders.length }} 筆數</p>
+      <p class="m-0">總 {{ orders.length }} 筆數</p>
     </div>
   </div>
 
@@ -36,7 +41,7 @@
       <tbody>
         <tr v-for="item in orders" :key="item.id">
           <td>{{ date(item.create_at) }}</td>
-          <td>{{ item.user.name }}</td>
+          <td>{{ item.user?.name }}</td>
           <td>NT${{ currency(item.total) }}</td>
           <td>{{ item.message === undefined ? "無" : item.message }}</td>
           <td>
@@ -49,20 +54,20 @@
                 <span class="material-symbols-outlined fs-6">payments</span>
               </button>
               <a
-                :href="`https://www.google.com/maps/place/${item.user.address}`"
+                :href="`https://www.google.com/maps/place/${item.user?.address}`"
                 class="btn btn-outline-primary d-flex"
                 target="_"
               >
                 <span class="material-symbols-outlined fs-6">map</span>
               </a>
               <a
-                :href="`tel:${item.user.tel}`"
+                :href="`tel:${item.user?.tel}`"
                 class="btn btn-outline-primary d-flex"
               >
                 <span class="material-symbols-outlined fs-6">call</span>
               </a>
               <a
-                :href="`mailto:${item.user.email}`"
+                :href="`mailto:${item.user?.email}`"
                 class="btn btn-outline-primary d-flex"
               >
                 <span class="material-symbols-outlined fs-6">email</span>
@@ -74,7 +79,11 @@
               >
                 <span class="material-symbols-outlined fs-6">edit</span>
               </button>
-              <button type="button" class="btn btn-outline-danger d-flex" @click="removeOrder(item.id)">
+              <button
+                type="button"
+                class="btn btn-outline-danger d-flex"
+                @click="removeOrder(item.id)"
+              >
                 <span class="material-symbols-outlined fs-6">delete</span>
               </button>
             </div>
@@ -103,7 +112,13 @@ export default {
     PageC
   },
   methods: {
-    ...mapActions(ordersStore, ['getOrders', 'sortNumber', 'getOrder', 'removeOrder'])
+    ...mapActions(ordersStore, [
+      'getOrders',
+      'sortNumber',
+      'getOrder',
+      'removeOrder',
+      'removeAllOrder'
+    ])
   },
   computed: {
     ...mapState(ordersStore, ['orders', 'pagination'])

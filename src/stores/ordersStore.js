@@ -15,9 +15,8 @@ export default defineStore('ordersDefineStore', {
   actions: {
     getOrders (page = 1) {
       status.isLoading = true
-      const api = `${import.meta.env.VITE_MAIN_URL}/v2/api/${
-        import.meta.env.VITE_MAIN_NAME
-      }/admin/orders?page=${page}`
+      const api = `${import.meta.env.VITE_MAIN_URL}/v2/api/${import.meta.env.VITE_MAIN_NAME
+        }/admin/orders?page=${page}`
       axios
         .get(api)
         .then((res) => {
@@ -29,7 +28,7 @@ export default defineStore('ordersDefineStore', {
             this.toast('error', '請重新登入')
           }
         })
-        .catch(() => this.toast('error', '資料取得失敗，請重新登入'))
+        .catch(error => console.error('api-getOrders error', error))
     },
     isPhone (value) {
       const phoneNumber = /^(09)[0-9]{8}$/
@@ -66,7 +65,7 @@ export default defineStore('ordersDefineStore', {
             this.toast('error', '上傳失敗')
           }
         })
-        .catch(() => this.toast('error', '上傳失敗'))
+        .catch(error => console.error('api-updateOrder error', error))
     },
     removeOrder (id) {
       const api = `${import.meta.env.VITE_MAIN_URL}api/${import.meta.env.VITE_MAIN_NAME}/admin/order/${id}`
@@ -83,7 +82,26 @@ export default defineStore('ordersDefineStore', {
               this.toast('error', '刪除失敗')
             }
           })
-            .catch(() => this.toast('error', '刪除失敗'))
+            .catch(error => console.error('api-removeOrder error', error))
+        }
+      })
+    },
+    removeAllOrder () {
+      const api = `${import.meta.env.VITE_MAIN_URL}api/${import.meta.env.VITE_MAIN_NAME}/admin/orders/all`
+
+      this.alert().then((result) => {
+        if (result.isConfirmed) {
+          status.isLoading = true
+          axios.delete(api).then((res) => {
+            status.isLoading = false
+            if (res.data.success) {
+              this.toast('success', '刪除成功')
+              this.getOrders()
+            } else {
+              this.toast('error', '刪除失敗')
+            }
+          })
+            .catch(error => console.error('api-removeOrder error', error))
         }
       })
     }
