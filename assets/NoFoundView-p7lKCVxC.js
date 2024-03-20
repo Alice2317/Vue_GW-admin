@@ -1,0 +1,1 @@
+import{_ as t,o,c as s,F as n,a as e}from"./index-_o1khLoC.js";const a={mounted(){setTimeout(()=>this.$router.push("/"),3e3)}},c=e("h1",null,"404",-1),r=e("p",null,"找不到頁面，正在跳轉至首頁",-1);function _(u,l,p,d,i,m){return o(),s(n,null,[c,r],64)}const h=t(a,[["render",_]]);export{h as default};
