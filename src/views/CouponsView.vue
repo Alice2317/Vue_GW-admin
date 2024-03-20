@@ -98,7 +98,7 @@
     </table>
   </div>
   <div class="d-flex justify-content-center">
-    <PageC :pagination="pagination" @page="getCoupons" />
+    <PageComponent :pagination="pagination" @page="getCoupons" />
   </div>
 
   <CouponModal />
@@ -107,13 +107,13 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import couponStore from '@/stores/couponStore'
-import PageC from '@/components/PageC.vue'
+import PageComponent from '@/components/PageComponent.vue'
 import CouponModal from '@/components/CouponModal.vue'
 
 export default {
   inject: ['date'],
   components: {
-    PageC,
+    PageComponent,
     CouponModal
   },
   methods: {

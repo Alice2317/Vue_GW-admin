@@ -28,7 +28,11 @@ export default defineStore('ordersDefineStore', {
             this.toast('error', '請重新登入')
           }
         })
-        .catch(error => console.error('api-getOrders error', error))
+        .catch(error => {
+          status.isLoading = false
+          this.toast('error', '請重新登入')
+          console.error('api-getOrders error', error)
+        })
     },
     isPhone (value) {
       const phoneNumber = /^(09)[0-9]{8}$/
@@ -65,7 +69,11 @@ export default defineStore('ordersDefineStore', {
             this.toast('error', '上傳失敗')
           }
         })
-        .catch(error => console.error('api-updateOrder error', error))
+        .catch(error => {
+          status.isLoading = false
+          this.toast('error', '上傳失敗')
+          console.error('api-updateOrder error', error)
+        })
     },
     removeOrder (id) {
       const api = `${import.meta.env.VITE_MAIN_URL}api/${import.meta.env.VITE_MAIN_NAME}/admin/order/${id}`
@@ -82,7 +90,11 @@ export default defineStore('ordersDefineStore', {
               this.toast('error', '刪除失敗')
             }
           })
-            .catch(error => console.error('api-removeOrder error', error))
+            .catch(error => {
+              status.isLoading = false
+              this.toast('error', '刪除失敗')
+              console.error('api-removeOrder error', error)
+            })
         }
       })
     },
@@ -101,7 +113,11 @@ export default defineStore('ordersDefineStore', {
               this.toast('error', '刪除失敗')
             }
           })
-            .catch(error => console.error('api-removeOrder error', error))
+            .catch(error => {
+              status.isLoading = false
+              this.toast('error', '刪除失敗')
+              console.error('api-removeAllOrder error', error)
+            })
         }
       })
     }

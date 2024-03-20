@@ -29,7 +29,11 @@ export default defineStore('productsDefineStore', {
             this.toast('error', '請重新登入')
           }
         })
-        .catch(() => this.toast('error', '資料取得失敗，請重新登入'))
+        .catch(error => {
+          status.isLoading = false
+          this.toast('error', '請重新登入')
+          console.error('api-getProducts error', error)
+        })
     },
     sortNumber (sort) {
       this.products.sort((a, b) => a[sort] > b[sort] ? 1 : -1)
@@ -78,7 +82,11 @@ export default defineStore('productsDefineStore', {
             this.toast('error', '上傳失敗')
           }
         })
-        .catch(() => this.toast('error', '上傳失敗'))
+        .catch(error => {
+          status.isLoading = false
+          this.toast('error', '上傳失敗')
+          console.error('api-updateProduct error', error)
+        })
     },
     updateEnabled (boolean, item) {
       this.isEdit = boolean
@@ -106,7 +114,11 @@ export default defineStore('productsDefineStore', {
               this.toast('error', '刪除失敗')
             }
           })
-            .catch(() => this.toast('error', '刪除失敗'))
+            .catch(error => {
+              status.isLoading = false
+              this.toast('error', '刪除失敗')
+              console.error('api-removeProduct error', error)
+            })
         }
       })
     }

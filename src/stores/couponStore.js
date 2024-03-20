@@ -21,15 +21,19 @@ export default defineStore('couponsDefineStore', {
         import.meta.env.VITE_MAIN_NAME
       }/admin/coupons?page=${page}`
       axios.get(api).then((res) => {
+        status.isLoading = false
         if (res.data.success) {
           this.coupons = res.data.coupons
           this.pagination = res.data.pagination
-          status.isLoading = false
         } else {
           this.toast('error', '請重新登入')
         }
       })
-        .catch(() => this.toast('error', '資料取得失敗，請重新登入'))
+        .catch(error => {
+          status.isLoading = false
+          this.toast('error', '請重新登入')
+          console.error('api-getCoupon error', error)
+        })
     },
     sortNumber (sort) {
       this.coupons.sort((a, b) => a[sort] > b[sort] ? 1 : -1)
@@ -71,7 +75,11 @@ export default defineStore('couponsDefineStore', {
           this.toast('error', '上傳失敗')
         }
       })
-        .catch(() => this.toast('error', '上傳失敗'))
+        .catch(error => {
+          status.isLoading = false
+          this.toast('error', '上傳失敗')
+          console.error('api-updateCoupon error', error)
+        })
     },
     updateEnabled (boolean, item) {
       this.isNew = boolean
@@ -99,7 +107,11 @@ export default defineStore('couponsDefineStore', {
               this.toast('error', '刪除失敗')
             }
           })
-            .catch(() => this.toast('error', '刪除失敗'))
+            .catch(error => {
+              status.isLoading = false
+              this.toast('error', '刪除失敗')
+              console.error('api-removeCoupon error', error)
+            })
         }
       })
     }

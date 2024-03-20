@@ -1,17 +1,17 @@
 <template>
-  <NavbarC />
+  <NavbarComponent />
   <main class="has-header-layout">
     <div class="container py-80">
-      <router-view></router-view>
+      <RouterView />
     </div>
   </main>
-  <LoadingC />
+  <LoadingComponent />
 </template>
 
 <script>
 import { currency, date, dateUnix } from '@/js/filter'
-import NavbarC from '@/components/NavbarC.vue'
-import LoadingC from '@/components/LoadingC.vue'
+import NavbarComponent from '@/components/NavbarComponent.vue'
+import LoadingComponent from '@/components/LoadingComponent.vue'
 
 export default {
   provide () {
@@ -20,8 +20,8 @@ export default {
     }
   },
   components: {
-    NavbarC,
-    LoadingC
+    NavbarComponent,
+    LoadingComponent
   },
   created () {
     const token = document.cookie.replace(
@@ -41,6 +41,7 @@ export default {
           this.$router.replace({ name: 'login' })
         }
       })
+      .catch(error => console.error('api-check error', error))
   }
 }
 </script>

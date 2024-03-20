@@ -1,5 +1,5 @@
 <template>
-  <HeaderC />
+  <HeaderComponent />
   <main class="has-header-layout">
     <div class="container py-80">
       <div class="row">
@@ -50,13 +50,13 @@
 </template>
 
 <script>
-import HeaderC from '@/components/HeaderC.vue'
+import HeaderComponent from '@/components/HeaderComponent.vue'
 import { mapActions, mapState } from 'pinia'
 import memberStore from '@/stores/memberStore'
 
 export default {
   components: {
-    HeaderC
+    HeaderComponent
   },
   methods: {
     ...mapActions(memberStore, ['signIn', 'isPassword', 'showPwd'])

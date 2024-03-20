@@ -30,8 +30,8 @@ export default defineStore('memberDefineStore', {
       status.isLoading = true
       const api = `${import.meta.env.VITE_MAIN_URL}/v2/admin/signin`
       axios.post(api, this.user).then((res) => {
+        status.isLoading = false
         if (res.data.success) {
-          status.isLoading = false
           document.cookie = `token=${res.data.token}; expires=${new Date(
             res.data.expired
           )};`
@@ -46,23 +46,31 @@ export default defineStore('memberDefineStore', {
         } else {
           this.toast('error', '失敗，請重新登入')
         }
-      }).catch(() => this.toast('error', '失敗，請重新登入'))
+      }).catch(error => {
+        status.isLoading = false
+        this.toast('error', '失敗，請重新登入')
+        console.error('api-signIn error', error)
+      })
     },
     logout () {
       status.isLoading = true
       const api = `${import.meta.env.VITE_MAIN_URL}/v2/logout`
       axios.post(api).then((res) => {
+        status.isLoading = false
         if (res.data.success) {
           this.router.replace('/')
           const date = new Date()
           date.setMinutes(date.getMinutes() - 480).toLocaleString()
           document.cookie = `token=; expires=${date}`
-          status.isLoading = false
         } else {
           this.toast('error', '失敗，請重新整理後再次操作')
         }
       })
-        .catch(() => this.toast('error', '失敗，請重新整理後再次操作'))
+        .catch(error => {
+          status.isLoading = false
+          this.toast('error', '失敗，請重新整理後再次操作')
+          console.error('api-logout error', error)
+        })
     }
   }
 })

@@ -27,7 +27,10 @@ export default defineStore('postModalDefineStore', {
             this.toast('success', '上傳成功')
           }
         })
-        .catch(() => this.toast('error', '上傳失敗'))
+        .catch(error => {
+          this.toast('error', '上傳失敗')
+          console.error('api-uploadImageUrl error', error)
+        })
     }
   }
 })

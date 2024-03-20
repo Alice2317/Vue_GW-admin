@@ -101,7 +101,7 @@
     </table>
   </div>
   <div class="d-flex justify-content-center">
-    <PageC :pagination="pagination" @page="getPosts" />
+    <PageComponent :pagination="pagination" @page="getPosts" />
   </div>
 
   <PostModal />
@@ -111,13 +111,13 @@
 import { mapActions, mapState } from 'pinia'
 import postsStore from '@/stores/postsStore'
 import PostModal from '@/components/PostModal.vue'
-import PageC from '@/components/PageC.vue'
+import PageComponent from '@/components/PageComponent.vue'
 
 export default {
   inject: ['date'],
   components: {
     PostModal,
-    PageC
+    PageComponent
   },
   methods: {
     ...mapActions(postsStore, [

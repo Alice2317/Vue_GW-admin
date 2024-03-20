@@ -40,7 +40,7 @@ app.use(router)
 app.use(VueAxios, axios)
 
 // loading
-app.component('loadingC', Loading)
+app.component('VLoading', Loading)
 
 // vee-validate
 app.component('VField', Field)

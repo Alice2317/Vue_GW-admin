@@ -619,9 +619,9 @@ $aspect-ratios: (
 // stylelint-disable value-keyword-case
 $font-family-sans-serif:"Noto Sans TC", system-ui, -apple-system, "Segoe UI",
   Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default; // custom;
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji",'sans-serif' !default; // custom;
 $font-family-monospace: "Noto Sans TC", SFMono-Regular, Menlo, Monaco, Consolas,
-  "Liberation Mono", "Courier New", monospace !default; // custom;
+  "Liberation Mono", "Courier New", monospace,'sans-serif' !default; // custom;
 // stylelint-enable value-keyword-case
 $font-family-base: var(--#{$prefix}font-sans-serif) !default;
 $font-family-code: var(--#{$prefix}font-monospace) !default;

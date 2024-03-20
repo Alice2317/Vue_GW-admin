@@ -93,7 +93,7 @@
     </table>
   </div>
   <div class="d-flex justify-content-center">
-    <PageC :pagination="pagination" @page="getOrders" />
+    <PageComponent :pagination="pagination" @page="getOrders" />
   </div>
 
   <OrderModal />
@@ -103,13 +103,13 @@
 import { mapActions, mapState } from 'pinia'
 import ordersStore from '@/stores/ordersStore'
 import OrderModal from '@/components/OrderModal.vue'
-import PageC from '@/components/PageC.vue'
+import PageComponent from '@/components/PageComponent.vue'
 
 export default {
   inject: ['date', 'currency'],
   components: {
     OrderModal,
-    PageC
+    PageComponent
   },
   methods: {
     ...mapActions(ordersStore, [

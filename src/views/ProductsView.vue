@@ -92,7 +92,7 @@
     </table>
   </div>
   <div class="d-flex justify-content-center">
-    <PageC :pagination="pagination" @page="getProducts" />
+    <PageComponent :pagination="pagination" @page="getProducts" />
   </div>
 
   <ProductModal />
@@ -102,13 +102,13 @@
 import { mapActions, mapState } from 'pinia'
 import ProductModal from '@/components/ProductModal.vue'
 import productStore from '@/stores/productStore'
-import PageC from '@/components/PageC.vue'
+import PageComponent from '@/components/PageComponent.vue'
 
 export default {
   inject: ['currency'],
   components: {
     ProductModal,
-    PageC
+    PageComponent
   },
   methods: {
     ...mapActions(productStore, [
